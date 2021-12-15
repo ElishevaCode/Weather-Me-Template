@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="cards" *ngIf="favorites.length > 0 else noFavorites">
+     <mat-card *ngFor="let favorite of favorites;let i = index" (click)="selectedFavorit(favorite.Key)">
+         <mat-card-title>{{ favorite.LocalizedName }}</mat-card-title>
+         <mat-card-subtitle>{{ favorite.Key }}</mat-card-subtitle>
+           <div class="temperature">
+             <mat-card-content class="celsius">{{ currentWeather[i].Temperature.Metric.Value }}</mat-card-content>&nbsp;&nbsp;&nbsp;
+           </div>
+           <button mat-icon-button (click)="toggleSelected(favorite.Key)"><mat-icon>delete</mat-icon></button>
+       </mat-card>
+  </div>
+
+  <ng-template #noFavorites>
+      <h1>no favorites!</h1>
+  </ng-template>
+</div>

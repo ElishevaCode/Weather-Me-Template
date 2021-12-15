@@ -1,0 +1,54 @@
+
+<div class="container">
+
+    <input  placeholder="Search for a city" 
+            [matAutocomplete]="auto" 
+            #input
+            (keypress)="keyPress($event)"
+            (input)="searchLocation(input.value)" 
+            class="searchCity">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="locationSelected(input.value)">
+      <mat-option *ngFor="let location of autocompleteLocation | async" [value]="location.Key">
+        {{ location.LocalizedName }} -
+        {{ location.Country.LocalizedName }}
+      </mat-option>
+    </mat-autocomplete>
+  
+  <div class="city">
+    <h1>{{ location.LocalizedName }}</h1>
+    <button  mat-icon-button (click)="toggleSelected()">
+      <mat-icon style="vertical-align: baseline;" *ngIf="selected"> favorite </mat-icon>
+      <mat-icon style="vertical-align: baseline;" *ngIf="!selected"> favorite_border</mat-icon>
+    </button>
+  </div>
+
+  <h2 style="margin-bottom: 2px;">Temperature in:</h2>
+  <mat-radio-group >
+    <mat-radio-button (change)="changeTemperatureUnit()" value="Celsius" [checked]="true">C° &nbsp; Celsius</mat-radio-button><br><br>
+    <mat-radio-button (change)="changeTemperatureUnit()" value="Fahrenheit">F° &nbsp; Fahrenheit</mat-radio-button>
+  </mat-radio-group><br>
+
+  <mat-card class="today">
+    <mat-card-title>Today</mat-card-title>
+      <mat-card-subtitle>{{ forecast.DailyForecasts[0].Date | date:'EEEE,  MMM / d' }}</mat-card-subtitle>
+      <div class="order">
+        <div class="temperature">
+          <mat-card-content class="celsius">{{ forecast.DailyForecasts[0].Temperature.Minimum.Value }}</mat-card-content>&nbsp;&nbsp;&nbsp;
+          <mat-card-content class="celsius">{{ forecast.DailyForecasts[0].Temperature.Maximum.Value }}</mat-card-content>
+        </div>
+        <mat-card-content> <b> Day: </b> {{ forecast.DailyForecasts[0].Day.IconPhrase }}</mat-card-content>
+        <mat-card-content> <b> Night: </b>{{ forecast.DailyForecasts[0].Night.IconPhrase }}</mat-card-content>
+      </div>
+  </mat-card>
+
+  <div class="cards">
+    <mat-card *ngFor="let day of forecast.DailyForecasts">
+      <mat-card-title>{{ day.Date | date:'EEEE' }}</mat-card-title>
+      <mat-card-subtitle>{{ day.Date | date:'MMM / d' }}</mat-card-subtitle>
+        <div class="temperature">
+          <mat-card-content class="celsius">{{ day.Temperature.Minimum.Value }}</mat-card-content>&nbsp;&nbsp;&nbsp;
+          <mat-card-content class="celsius">{{ day.Temperature.Maximum.Value }}</mat-card-content>
+        </div>
+    </mat-card>
+  </div>
+</div>

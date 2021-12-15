@@ -1,0 +1,52 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-grow:row, wrap;
+    height: 90%;
+    width: 95%;
+    margin: 3%;
+}
+
+.cards{
+    display: flex;
+    justify-content: start;
+    flex-grow:row, wrap;
+}
+
+.today{
+    width: 20vw;
+    margin-bottom: 1%;
+}
+
+.mat-card{
+    margin-right: 1%;
+}
+
+.celsius:after{
+    content:"°";
+}
+
+.material-icons{
+    white-space: break-spaces;
+}
+
+.temperature{
+    display: flex;
+}
+
+.searchCity{
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 2%;
+    border-radius: 5px;
+}
+
+.city{
+    display: flex;
+    align-items: stretch;
+}
+
+.mat-icon{
+    height: auto;
+    width: auto;
+}

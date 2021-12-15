@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-grow:row, wrap;
+    height: 90%;
+    width: 95%;
+    margin: 3%;
+}
+
+.cards{
+    display: flex;
+    justify-content: start;
+    flex-grow:row, wrap;
+}
+
+.mat-card{
+    margin-right: 1%;
+}
+
+.celsius:after{
+    content:"°";
+}
+
+.material-icons{
+    white-space: break-spaces;
+}
+
+.temperature{
+    display: flex;
+}
+
+.mat-icon{
+    height: auto;
+    width: auto;
+}

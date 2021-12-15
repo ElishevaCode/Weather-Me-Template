@@ -1,0 +1,30 @@
+<div id="app-wrapper">
+  <div id="loader"><mat-progress-bar *ngIf="displayLoading" mode="indeterminate"></mat-progress-bar></div>
+
+  <div id="sidenav-container">
+    <h1>WeatherMe</h1>
+
+    <div class="link-wrapper">
+      <mat-icon>search</mat-icon>
+      <p routerLink="/search">Search</p>
+    </div>
+
+    <div class="link-wrapper" mat-button>
+      <mat-icon>favorite</mat-icon>
+      <p routerLink="/favorites">Favorites</p>
+    </div>
+
+    <div>
+      <mat-icon>brightness_5</mat-icon>&nbsp;
+      <mat-slide-toggle (change)="change()"></mat-slide-toggle>&nbsp;
+      <mat-icon>bedtime</mat-icon>
+    </div>
+
+  </div>
+
+  <div [ngClass]="{'dark':color=='dark','light':color=='light'}" id="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- <ng-snotify></ng-snotify> -->
